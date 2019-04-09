@@ -38,7 +38,18 @@ docker network create --driver bridge postgres-network
 
 docker run --name adonis --network=postgres-network -e "POSTGRES_PASSWORD=admin" -p 5432:5432 -v /Users/marcus/DESENVOLVIMENTO/PostgreSQL:/var/lib/postgresql/data -d postgres
 
+### Linux:
+
+```sh
+docker run --name adonis -e "POSTGRES_PASSWORD=admin" -p 5432:5432 -v /home/marcus/developer/PostgreSQL:/var/lib/postgresql/data -d postgres
+```
+
+### MacOS:
+
+```sh
 MacBook-Air-de-MARCUS:~ marcus\$ docker run --name adonis --network=postgres-network -e "POSTGRES_PASSWORD=admin" -p 5432:5432 -v /Users/marcus/DESENVOLVIMENTO/PostgreSQL:/var/lib/postgresql/data -d postgres
+
+```
 
 docker run --name adonis -e "POSTGRES_PASSWORD=admin" -p 5432:5432 -v /Users/marcus/DESENVOLVIMENTO/PostgreSQL:/var/lib/postgresql/data -d postgres
 
@@ -129,4 +140,16 @@ adonis migration:rollback
 
 ```sh
 npm install @adonisjs/mail
+```
+
+# Criando um model
+
+### -m: migration, -c: controller
+
+```sh
+adonis make:model Project -m -c
+```
+
+```sh
+adonis make:model Task -m -c
 ```
