@@ -36,11 +36,14 @@ docker network create --driver bridge postgres-network
 
 #Instalando o Postgres no Docker
 
-docker run --name postgres-node3 --network=postgres-network -e "POSTGRES_PASSWORD=admin" -p 5432:5432 -v /Users/marcus/DESENVOLVIMENTO/PostgreSQL:/var/lib/postgresql/data -d postgres
+docker run --name adonis --network=postgres-network -e "POSTGRES_PASSWORD=admin" -p 5432:5432 -v /Users/marcus/DESENVOLVIMENTO/PostgreSQL:/var/lib/postgresql/data -d postgres
 
-MacBook-Air-de-MARCUS:~ marcus$ docker run --name adonis --network=postgres-network -e "POSTGRES_PASSWORD=admin" -p 5432:5432 -v /Users/marcus/DESENVOLVIMENTO/PostgreSQL:/var/lib/postgresql/data -d postgres
+MacBook-Air-de-MARCUS:~ marcus\$ docker run --name adonis --network=postgres-network -e "POSTGRES_PASSWORD=admin" -p 5432:5432 -v /Users/marcus/DESENVOLVIMENTO/PostgreSQL:/var/lib/postgresql/data -d postgres
+
+docker run --name adonis -e "POSTGRES_PASSWORD=admin" -p 5432:5432 -v /Users/marcus/DESENVOLVIMENTO/PostgreSQL:/var/lib/postgresql/data -d postgres
+
 5488634f1b778bc4248ed6adf608809408cc758a0e5e494309bfd48afb19328c
-MacBook-Air-de-MARCUS:~ marcus$ docker exec -it adonis /bin/bash
+MacBook-Air-de-MARCUS:~ marcus\$ docker exec -it adonis /bin/bash
 
 #Instalando o PGAdmin
 
@@ -94,4 +97,36 @@ npx eslint --init
 
 ```sh
 npm i --save pg
+```
+
+---
+
+# Criando um Controller (Http)
+
+```sh
+adonis make:controller User
+```
+
+# Listando as Rotas do Adonis
+
+```sh
+adonis route:list
+```
+
+┌────────┬─────────┬──────────────────────┬────────────┬────────┬────────┐
+│ Route │ Verb(s) │ Handler │ Middleware │ Name │ Domain │
+├────────┼─────────┼──────────────────────┼────────────┼────────┼────────┤
+│ /users │ POST │ UserController.store │ │ /users │ │
+└────────┴─────────┴──────────────────────┴────────────┴────────┴────────┘
+
+# Efetuando o rollback das migrations
+
+```sh
+adonis migration:rollback
+```
+
+# Instalando o Módulo de e-mail do Adonis
+
+```sh
+npm install @adonisjs/mail
 ```
